@@ -13,3 +13,10 @@ after_success:
   - docker build -t dhinesh04/multi-nginx ./nginx
   - docker build -t dhinesh04/multi-server ./server
   - docker build -t dhinesh04/multi-worker ./worker
+
+  -echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push dhinesh04/multi-client
+  - docker push dhinesh04/multi-nginx
+  - docker push dhinesh04/multi-server
+  - docker push dhinesh04/multi-worker
